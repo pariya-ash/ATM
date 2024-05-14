@@ -45,7 +45,7 @@ class atm implements ActionListener {
     //buttons
     JButton fa = new JButton("fa");
     JButton en = new JButton("en");
-    JButton submit = new JButton("ثبت زمز");
+    JButton submit = new JButton("ثبت رمز");
     JButton taghir= new JButton("تغییر رمز");
     JButton mojodi= new JButton(" اعلام موجودی");
     JButton bardasht= new JButton("برداشت وجه");
@@ -72,10 +72,13 @@ class atm implements ActionListener {
         frame.setTitle("ATM");
         frame.setSize(700, 500);
         frame.getContentPane().setBackground(clr);
-        frame.setLayout(null);
+        frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(true);
+
+
 
         en.setBounds(5, 200, 100, 200);
         frame.add(en);
@@ -87,6 +90,7 @@ class atm implements ActionListener {
         panel_lang.setBounds(0,0,700,500);
         panel_lang.setBackground(clr);
 
+
         en.setBounds(5, 200, 100, 50);
         panel_lang.add(en);
         fa.setBounds(580, 200, 100, 50);
@@ -94,7 +98,7 @@ class atm implements ActionListener {
 
         label_lang.setBounds(250,150,300,100);
         panel_lang.add(label_lang);
-        frame.add(panel_lang);
+        frame.add(panel_lang,BorderLayout.NORTH);
 
 
         // panel password
@@ -133,8 +137,6 @@ class atm implements ActionListener {
 
         panel_akhar.add(label_akhar);
         panel_akhar.add(exit);
-
-
 
 
         // panel taghir
@@ -198,23 +200,6 @@ class atm implements ActionListener {
 
         panel_mojodi.add(label_mojodi);
         panel_mojodi.add(sabt_mojodi);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     public void addActionEvent() {
@@ -239,53 +224,78 @@ class atm implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object dokme = e.getSource();
         if (dokme==en || dokme==fa){
-            frame.remove(panel_lang);
+            frame.getContentPane().removeAll();
             frame.add(panel_password);
+            frame.repaint();
+            frame.revalidate();
+
+           // frame.remove(panel_lang);
+            //frame.add(panel_password,BorderLayout.NORTH);
         }
         if (dokme==submit){
             frame.remove(panel_password);
-            frame.add(panel_asli);
+            frame.add(panel_asli,BorderLayout.NORTH);
+            frame.repaint();
+            frame.revalidate();
         }
 
         if (dokme==taghir){
             frame.remove(panel_asli);
             frame.add(panel_taghir);
+            frame.repaint();
+            frame.revalidate();
         }
         if (dokme==sabt_taghir){
             frame.remove(panel_taghir);
             frame.add(panel_akhar);
+            frame.repaint();
+            frame.revalidate();
         }
 
         if (dokme==bardasht){
             frame.remove(panel_asli);
             frame.add(panel_bardasht);
+            frame.repaint();
+            frame.revalidate();
         }
         if (dokme==sabt_bardasht){
             frame.remove(panel_bardasht);
             frame.add(panel_akhar);
+            frame.repaint();
+            frame.revalidate();
         }
 
         if (dokme==kart){
 
             frame.remove(panel_asli);
             frame.add(panel_kart);
+            frame.repaint();
+            frame.revalidate();
         }
         if (dokme==sabt_kart){
             frame.remove(panel_kart);
             frame.add(panel_akhar);
+            frame.repaint();
+            frame.revalidate();
         }
 
         if (dokme==mojodi){
             frame.remove(panel_asli);
             frame.add(panel_mojodi);
+            frame.repaint();
+            frame.revalidate();
         }
         if (dokme==sabt_mojodi){
             frame.remove(panel_mojodi);
             frame.add(panel_akhar);
+            frame.repaint();
+            frame.revalidate();
         }
         if (dokme==exit){
             frame.remove(panel_akhar);
             frame.add(panel_asli);
+            frame.repaint();
+            frame.revalidate();
         }
 
     }
